@@ -15,3 +15,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: example101
         ports:
           - 3306:3306
+    
+    steps:
+      - name: Listar directorio de trabajo
+        run: ls -al
