@@ -6,6 +6,10 @@ jobs:
   docker-services-job:
     runs-on: ubuntu-latest
 
+    # Variables de entorno para el workflow
+    env:
+      MY_VAR: Mi variable de entorno
+
     # Docker services (MySQL, Redis, etc.)
     services:
       mysql:
@@ -24,3 +28,6 @@ jobs:
     steps:
       - name: Listar directorio de trabajo
         run: ls -al
+
+      - name: Impresión de variable de entorno
+        run: echo "La variable de entorno es: [$MY_VAR]"
