@@ -53,3 +53,8 @@ jobs:
           echo "La URL de conexión a la base de datos Oracle es [${{ env.oracle_db_url }}]"
           echo "La URL de conexión a la bd PostgreSQL es [${{ vars.POSTGRESQL_DB_URL }}]"
           echo "URL de mongoDB es [${{ vars.MONGO_BD_URL }}]"
+
+      - name: Mostrar valores de SECRETS
+        run: |
+          echo "El valor del Secret [ORCL_DB_PWD_SECRET] es [${{ secrets.ORCL_DB_PWD_SECRET }}]"
+          echo "El valor del Secret [MONGO_DB_PWD_SECRET] es [${{ secrets.MONGO_DB_PWD_SECRET }}]"
