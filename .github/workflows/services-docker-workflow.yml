@@ -46,3 +46,4 @@ jobs:
         run: |
           echo "La URL de conexión a la base de datos Oracle es [${{ env.oracle_db_url }}]"
           echo "La URL de conexión a la bd PostgreSQL es [${{ vars.POSTGRESQL_DB_URL }}]"
+          echo "URL de mongoDB es [${{ vars.MONGO_BD_URL }}]"
