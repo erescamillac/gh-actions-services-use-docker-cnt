@@ -1,0 +1,29 @@
+# This a workflow (yaml) file extract sample that ilustrates the CONDITIONAL execution of a JOB
+# in a Specific Environment depending on the branch to be published (deployed).
+
+# Original YT-URL: {https://www.youtube.com/watch?v=nI6pRfH7VTc}
+
+jobs:
+    hello:
+        ...
+        ...
+    
+    deploy_to_development:
+        name: "(Dev-env) Kubernetes: Development"
+        # SI NO es la rama 'main'
+        if: ${{ github.ref != 'refs/heads/main' }}
+        needs: hello
+        environment:
+            name: devlopment-env
+            url: ${{ steps.kube-deploy.outputs.service-url }}
+        runs-on: ubuntu-latest
+
+    deploy_to_staging:
+        name: "(staging-env) Kubernetes: Staging"
+        # SI es la Rama [main]
+        if: ${{ github.ref == 'refs/heads/main' }}
+        needs: hello
+        environment:
+            name: staging-env
+            url: ${{ steps.kube-deploy.outputs.service-url }}
+        runs-on: ubuntu-latest
