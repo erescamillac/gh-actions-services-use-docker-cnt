@@ -1,0 +1,17 @@
+name: Ejemplo de uso de Servicios Docker
+
+on: [push]
+
+jobs:
+  docker-services-job:
+    runs-on: ubuntu-latest
+
+    # Docker services (MySQL, Redis, etc.)
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          # The password TO BE set for the MySQL root user
+          MYSQL_ROOT_PASSWORD: example101
+        ports:
+          - 3306:3306
