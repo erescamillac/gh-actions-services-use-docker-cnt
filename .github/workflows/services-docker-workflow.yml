@@ -30,4 +30,9 @@ jobs:
         run: ls -al
 
       - name: Impresión de variable de entorno
-        run: echo "La variable de entorno es [$MY_VAR]"
+        env:
+          MY_VAR_STEP: Variable a Nivel de Step
+        # Evitar el uso de colon (:) dentro del comando [echo]
+        run: | 
+          echo "La variable de entorno es [$MY_VAR]"
+          echo "La variable de entorno a nivel de step es [$MY_VAR_STEP]"
