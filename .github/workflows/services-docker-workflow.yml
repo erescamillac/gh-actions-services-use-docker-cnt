@@ -11,6 +11,7 @@ env:
 
 jobs:
   docker-services-job:
+    # Specific GH-Environment for this job
     environment: development-env
     runs-on: ubuntu-latest
 
@@ -46,6 +47,8 @@ jobs:
           echo "La variable de entorno a nivel de step es [$MY_VAR_STEP]"
 
       - name: Impresión de URL de conexión a la base de datos Oracle
+        # {vars.MONGO_BD_URL} is a variable set in the repository settings (repository-variable)
+        # {vars.POSTGRESQL_DB_URL} AND {vars.DEV_ENV_ORACLE_DB_URL} are [Environment variables] for the env: [development-env]
         run: |
           echo "La URL de conexión a la base de datos Oracle es [${{ env.oracle_db_url }}]"
           echo "La URL de conexión a la bd PostgreSQL es [${{ vars.POSTGRESQL_DB_URL }}]"
