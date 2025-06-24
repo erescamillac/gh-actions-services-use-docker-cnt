@@ -30,4 +30,4 @@ jobs:
         run: ls -al
 
       - name: Impresión de variable de entorno
-        run: echo "La variable de entorno es: $MY_VAR"
+        run: echo "La variable de entorno es [$MY_VAR]"
