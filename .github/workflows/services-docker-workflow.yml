@@ -2,6 +2,11 @@ name: Ejemplo de uso de Servicios Docker
 
 on: [push]
 
+env:
+  # Setting an environment variable with the value of a CONFIGURATION variable
+  # (CONFIGURATION variable): github gh-username/repo-name > Settings > Secrets and variables > Actions
+  oracle_db_url: ${{ vars.DEV_ENV_ORACLE_DB_URL }}
+
 jobs:
   docker-services-job:
     runs-on: ubuntu-latest
@@ -36,3 +41,8 @@ jobs:
         run: | 
           echo "La variable de entorno es [$MY_VAR]"
           echo "La variable de entorno a nivel de step es [$MY_VAR_STEP]"
+
+      - name: Impresión de URL de conexión a la base de datos Oracle
+        run: |
+          echo "La URL de conexión a la base de datos Oracle es [${{ env.oracle_db_url }}]"
+          echo "La URL de conexión a la bd PostgreSQL es [${{ vars.POSTGRESQL_DB_URL }}]"
