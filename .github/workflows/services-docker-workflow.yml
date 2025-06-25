@@ -58,3 +58,12 @@ jobs:
         run: |
           echo "El valor del Secret [ORCL_DB_PWD_SECRET] es [${{ secrets.ORCL_DB_PWD_SECRET }}]"
           echo "El valor del Secret [MONGO_DB_PWD_SECRET] es [${{ secrets.MONGO_DB_PWD_SECRET }}]"
+
+      - name: Uso de SSH Public Key (Secret)
+        # (127.0.1.1) : localhost
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PUBLIC_KEY }}" >> ~/.ssh/id_rsa.pub
+          chmod 600 ~/.ssh/id_rsa.pub
+          ssh-keyscan -H 127.0.1.1 >> ~/.ssh/known_hosts
+          cat ~/.ssh/known_hosts
